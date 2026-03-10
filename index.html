@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento PIX</title>
+<style>
+body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
+.container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 320px; }
+.label { color: #32bcad; font-size: 22px; font-weight: bold; margin-bottom: 10px; }
+.sub-label { color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.4; }
+.chave-display { background: #f8f9fa; border: 1px solid #ddd; padding: 15px; border-radius: 10px; margin-bottom: 20px; font-family: monospace; font-size: 11px; color: #444; word-break: break-all; }
+.btn-copiar { background: #32bcad; color: white; border: none; padding: 18px; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; text-transform: uppercase; transition: 0.3s; }
+.btn-copiar:active { transform: scale(0.95); }
+#aviso { position: fixed; bottom: 30px; background: #333; color: #fff; padding: 12px 25px; border-radius: 50px; display: none; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="label">PIX</div>
+<div class="sub-label">Clique no botão abaixo para copiar o código de pagamento</div>
+<div class="chave-display" id="valor-chave">00020126580014BR.GOV.BCB.PIX013674aac82f-c2ed-433a-8d70-aa1934fb6cd85204000053039865802BR5921Wilson Batista Junior6009SAO PAULO621405109tC1QRMi6F63049986</div>
+<button class="btn-copiar" onclick="copiar()">COPIAR CÓDIGO PIX</button>
+<div id="aviso">✅ Copiado com sucesso!</div>
+</div>
+<script>
+function copiar() {
+var texto = document.getElementById('valor-chave').innerText;
+var elem = document.createElement("textarea");
+document.body.appendChild(elem);
+elem.value = texto;
+elem.select();
+document.execCommand("copy");
+document.body.removeChild(elem);
+var aviso = document.getElementById('aviso');
+aviso.style.display = 'block';
+setTimeout(function() { aviso.style.display = 'none'; }, 3000);
+}
+</script>
+</body>
+</html>
